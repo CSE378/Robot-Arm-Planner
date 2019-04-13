@@ -21,7 +21,4 @@ theta1 = asin(L2*sin(theta2)/sqrt(X^2+Y^2)) + atan(2*Y/X);
 radius = sqrt(X^2+Y^2);
 distance = sqrt(L1^2+L2^2);
 
-if (radius < distance) 
-    theta2 = [];
-    theta1 = [];
-end
+if (radius < )
