@@ -1,4 +1,4 @@
-function Node =  generateNode(robotEnv, obstacles)
+function Node =  generateNode(robotEnv)
 % Node = [theta1, theta2]
 % obstacles: m*6 matrix for m obstacles
 % obstacles(i,:) is the coordinates of the i^th triangular obstacle: X1, Y1, X2, Y2, X3, Y3
@@ -9,16 +9,15 @@ L2 = robotEnv.L2;
 theta1 = [];
 theta2 = [];
 isValid = false;
+obstacles = robotEnv.obstacles;
 
 while(~isValid)
-    randomPos;
+    randomPos = [0, 0];
     isValid = true;
-    while(isEqual(theta1, []) && isEqual(theta2, []))
+    while(isequal(theta1, []) && isequal(theta2, []))
        randomPos = 80*rand(2,1) - 40;
 
-       res = q_inverseKinematic(robotEnv, randomPos);
-       theta1 = res(1);
-       theta2 = res(2);
+       [theta1, theta2] = q_inverseKinematic(robotEnv, randomPos);
     end
     
     [length, ~] = size(obstacles);
@@ -40,8 +39,10 @@ while(~isValid)
         condition4 = ~isIntersect(J1, J2, T1, T2);
         condition5 = ~isIntersect(J1, J2, T1, T3);
         condition6 = ~isIntersect(J1, J2, T2, T3);
+        %Check for intersections between first and second link
+        condition7 = ~IsIntersect(base, J1, J1, J2);
         
-        condition = condition1 & condition2 & condition3 & condition4 & condition5 & condition6;
+        condition = condition1 & condition2 & condition3 & condition4 & condition5 & condition6 & condition7;
         isValid = isValid & condition;
     end
 end

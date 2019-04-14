@@ -14,9 +14,9 @@ function [Node, Edge] =  createPlanner(robotEnv, K)
 
 
 % Dummy code, modify as you wish
-Node = rand(2, K);
+Node;
 Edge = randi([0, 1], [K, K]);
 
-for i=1:K
+for i=1:k
     Node(:,i) = generateNode(robotEnv);
 end
