@@ -20,3 +20,5 @@ Edge = randi([0, 1], [K, K]);
 for i=1:K
     Node(:,i) = generateNode(robotEnv);
 end
+
+% Create adjacency matrix
