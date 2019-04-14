@@ -15,7 +15,7 @@ L1 = robotEnv.L1;
 L2 = robotEnv.L2;
 
 theta2 = acos((X^2 + Y^2 - L1^2 - L2^2)/(2*L1*L2));
-theta1 = atan(Y/X) - atan((L2*sin(theta2))/(L1 + L2*cos(theta2)));
+theta1 = atan2(Y,X) - atan((L2*sin(theta2))/(L1 + L2*cos(theta2)));
 
 % Check if outside reachability
 dist = sqrt(X^2+Y^2);
