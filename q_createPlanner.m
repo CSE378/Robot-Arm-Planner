@@ -1,6 +1,6 @@
 % Implement this function
 
-function [Node, Edge] =  createPlanner(robotEnv, K)
+function [Node, Edge] =  q_createPlanner(robotEnv, K)
 % Inputs:
 %   robotEnv: two-link arm environment, created using robotEnv = M_TwoLinkArm(obstacles).
 %   K: the number of random points in the probabilistic roadmap. 
@@ -22,3 +22,14 @@ for i=1:K
 end
 
 % Create adjacency matrix
+for i=1:K
+    node_i = Node(:,i);
+    for j=1:K
+        node_j = Node(:,j);
+        if (isConnected(node_i, node_j))
+            Edge(i,j) = 1;
+        else
+            Edge(i,j) = 0;
+        end
+    end
+end

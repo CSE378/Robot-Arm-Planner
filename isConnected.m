@@ -1,4 +1,4 @@
-bool = isConnected(node1, node2);
+function bool = isConnected(node1, node2);
 
 theta11 = node1(1);
 theta21 = node1(2);
