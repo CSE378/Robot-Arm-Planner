@@ -34,15 +34,15 @@ while(~isValid)
         T3 = [obstacle(5), obstacle(6)];
         
         %Check for intersections with first link
-        condition1 = ~logical(isIntersect(base, J1, T1, T2));
-        condition2 = ~logical(isIntersect(base, J1, T1, T3));
-        condition3 = ~logical(isIntersect(base, J1, T2, T3));
+        condition1 = ~isIntersect(base, J1, T1, T2);
+        condition2 = ~isIntersect(base, J1, T1, T3);
+        condition3 = ~isIntersect(base, J1, T2, T3);
         %Check for intersections with second link
-        condition4 = ~logical(isIntersect(J1, J2, T1, T2));
-        condition5 = ~logical(isIntersect(J1, J2, T1, T3));
-        condition6 = ~logical(isIntersect(J1, J2, T2, T3));
+        condition4 = ~isIntersect(J1, J2, T1, T2);
+        condition5 = ~isIntersect(J1, J2, T1, T3);
+        condition6 = ~isIntersect(J1, J2, T2, T3);
         %Check for intersections between first and second link
-        condition7 = ~logical(isIntersect(base, J1, J1, J2));
+        condition7 = ~isIntersect(base, J1, J1, J2);
         
         condition = condition1 && condition2 && condition3 && condition4 && condition5 && condition6 && condition7;
         isValid = isValid && condition;
