@@ -40,7 +40,7 @@ while(~isValid)
         condition5 = ~isIntersect(J1, J2, T1, T3);
         condition6 = ~isIntersect(J1, J2, T2, T3);
         %Check for intersections between first and second link
-        condition7 = ~IsIntersect(base, J1, J1, J2);
+        condition7 = ~isIntersect(base, J1, J1, J2);
         
         condition = condition1 & condition2 & condition3 & condition4 & condition5 & condition6 & condition7;
         isValid = isValid & condition;

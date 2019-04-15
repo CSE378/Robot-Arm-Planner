@@ -24,13 +24,9 @@ path = shortestpath(G, startIndex, goalIndex);
 [~, pathLength] = size(path);
 
 theta1s = Inf(1, pathLength);
-theta2s = Inf(2, pathLength);
+theta2s =
 
-for i=1:pathLength
-    index = path(i);
-    theta1 = Node(1, index);
-    theta2 = Node(2, index);
-    
-    theta1s(i) = theta1;
-    theta2s(i) = theta2;
-end
+% You can modify/delete the below dummy code
+nStep = 40;
+theta1s = pi*(0:nStep)/nStep;
+theta2s = pi*(0:nStep)/nStep;
