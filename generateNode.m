@@ -13,11 +13,17 @@ obstacles = robotEnv.obstacles;
 runs = 1;
 
 while(~isValid)
+    runs = runs + 1;
+    % Fix halting error
+    if runs > 500
+        Node = generateNode(robotEnv);
+        return
+    end
 
     randomPos = [0, 0];
     isValid = true;
     while(isequal(theta1, []) && isequal(theta2, []))
-       randomPos = 80*rand(2,1) - 40;
+       randomPos = 80*rand(1,2) - 40;
 
        [theta1, theta2] = q_inverseKinematic(robotEnv, randomPos);
     end
@@ -41,11 +47,14 @@ while(~isValid)
         condition4 = ~logical(isIntersect(J1, J2, T1, T2));
         condition5 = ~logical(isIntersect(J1, J2, T1, T3));
         condition6 = ~logical(isIntersect(J1, J2, T2, T3));
-        %Check for intersections between first and second link
-        condition7 = ~logical(isIntersect(base, J1, J1, J2));
         
-        condition = condition1 && condition2 && condition3 && condition4 && condition5 && condition6 && condition7;
+        condition = condition1 && condition2 && condition3 && condition4 && condition5 && condition6;
+     
         isValid = isValid && condition;
+        if isValid && i == length
+           Node = [theta1, theta2];
+           return
+        end
     end
 end
 

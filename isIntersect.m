@@ -3,9 +3,6 @@ function intrsct = isIntersect(p1, p2, p3, p4)
 % Copied from: 
 % https://stackoverflow.com/questions/27928373/how-to-check-whether-two-lines-intersect-or-not?rq=1
 
-%xy = cat(2, p1, p2, p3, p4);
-%x = xy(1,:);
-%y = xy(2,:);
 x = [p1(1), p2(1), p3(1), p4(1)];
 y = [p1(2), p2(2), p3(2), p4(2)];
 dt1=det([1,1,1;x(1),x(2),x(3);y(1),y(2),y(3)])*det([1,1,1;x(1),x(2),x(4);y(1),y(2),y(4)]);

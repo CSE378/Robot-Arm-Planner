@@ -26,7 +26,7 @@ if (radius < dist)
     theta1 = [];
 end
 
-if (dist < 10)
+if (dist <= 10)
     theta2 = [];
     theta1 = [];
 end
