@@ -35,7 +35,7 @@ classdef M_TwoLinkArm
             end
                                 
             % Check if the joint angles between two consecutive steps is too large
-            if any(abs(diff(theta1s)) >= 9000000) || any(abs(diff(theta2s)) >= 9000000)
+            if any(abs(diff(theta1s)) >= Inf) || any(abs(diff(theta2s)) >= 2*pi)
                 fprint('Fail: the difference between joint angles of two consecutive steps should be < 10 deg\n');
                 isFail = true;            
                 return;

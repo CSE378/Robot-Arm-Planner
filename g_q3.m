@@ -8,11 +8,6 @@
 testEnvs = struct();
 
 testId = 1;
-testEnvs(testId).obstacles = [];
-testEnvs(testId).startXY = [30, 0];
-testEnvs(testId).endXY = [-10, 0];
-
-testId = 2;
 testEnvs(testId).obstacles = [10 -20, 20, -30, 25, -10; 
                               -10, 10, -20, 20, -15, 10]; 
 testEnvs(testId).startXY = [30, 0];

@@ -31,7 +31,7 @@ while(~isValid)
     [length, ~] = size(obstacles);
     base = [0,0];
     J1 = [L1*cos(theta1), L1*sin(theta1)];
-    J2 = randomPos;
+    J2 = [J1(1) + L2*cos(theta1 + theta2), J1(2) + L2*sin(theta1 + theta2)];
     for i=1:length
         obstacle = obstacles(i,:);
         % Triangle points
@@ -40,13 +40,13 @@ while(~isValid)
         T3 = [obstacle(5), obstacle(6)];
         
         %Check for intersections with first link
-        condition1 = ~logical(isIntersect(base, J1, T1, T2));
-        condition2 = ~logical(isIntersect(base, J1, T1, T3));
-        condition3 = ~logical(isIntersect(base, J1, T2, T3));
+        condition1 = ~logical(doesIntersect(base, J1, T1, T2));
+        condition2 = ~logical(doesIntersect(base, J1, T1, T3));
+        condition3 = ~logical(doesIntersect(base, J1, T2, T3));
         %Check for intersections with second link
-        condition4 = ~logical(isIntersect(J1, J2, T1, T2));
-        condition5 = ~logical(isIntersect(J1, J2, T1, T3));
-        condition6 = ~logical(isIntersect(J1, J2, T2, T3));
+        condition4 = ~logical(doesIntersect(J1, J2, T1, T2));
+        condition5 = ~logical(doesIntersect(J1, J2, T1, T3));
+        condition6 = ~logical(doesIntersect(J1, J2, T2, T3));
         
         condition = condition1 && condition2 && condition3 && condition4 && condition5 && condition6;
      

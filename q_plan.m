@@ -34,3 +34,11 @@ for i=1:pathLength
     theta1s(i) = theta1;
     theta2s(i) = theta2;
 end
+
+% Crop array
+for i=1:pathLength
+    if theta1s(i) == Inf
+        theta1s = theta1s(1:i-1);
+        theta2s = theta2s(1:i-1);
+    end
+end
